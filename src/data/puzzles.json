@@ -1,0 +1,18 @@
+{
+  "locker2B": {
+    "type": "symbolLock",
+    "title": "LOCKER 2B",
+    "symbols": ["ventana", "estación", "litera"],
+    "code": [6, 4, 5],
+    "onSolve": [
+      { "type": "say", "text": "Clic. El locker se abre." },
+      { "type": "give", "item": "linterna" },
+      { "type": "give", "item": "llave_hex" },
+      { "type": "give", "item": "cinta" },
+      { "type": "give", "item": "abrazaderas" },
+      { "type": "setFlag", "flag": "locker_abierto" },
+      { "type": "say", "text": "Seis ventanas, estación cuatro, cinco literas." }
+    ],
+    "onFail": [{ "type": "say", "text": "No abre. Los símbolos tienen que significar algo." }]
+  }
+}

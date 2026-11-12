@@ -1,0 +1,21 @@
+{
+  "items": [
+    { "id": "linterna", "name": "Linterna", "description": "Metal gris. Su haz es cálido y revela lo que la oscuridad esconde.", "color": "#fff6d6" },
+    { "id": "llave_hex", "name": "Llave hexagonal", "description": "Una llave en L pequeña para tornillos hexagonales.", "color": "#9aa7b5" },
+    { "id": "cinta", "name": "Cinta americana", "description": "Medio rollo plateado.", "color": "#b7bcc4" },
+    { "id": "abrazaderas", "name": "Abrazaderas (x2)", "description": "Dos aros metálicos para mangueras y tuberías.", "color": "#8a96a3" },
+    { "id": "pagina1", "name": "Página 1", "description": "Hoja rota con un patrón de interruptores dibujado a mano.", "color": "#d8d0bd" },
+    { "id": "pagina2", "name": "Página 2", "description": "Hoja rota con un esquema de tuberías.", "color": "#d8d0bd" },
+    { "id": "pagina3", "name": "Página 3", "description": "Hoja medio quemada con una secuencia de arranque.", "color": "#cbb998" },
+    { "id": "pagina12", "name": "Páginas 1+2", "description": "Dos fragmentos del procedimiento, unidos.", "color": "#d8d0bd" },
+    { "id": "procedimiento", "name": "Procedimiento completo", "description": "El procedimiento de reinicio de energía, completo.", "color": "#efe6cc" },
+    { "id": "cable", "name": "Cable corto", "description": "Cable de cobre con las puntas peladas.", "color": "#c97b3a" },
+    { "id": "fusible", "name": "Fusible", "description": "Tubo de vidrio con un filamento intacto.", "color": "#cfe3f5" },
+    { "id": "fusible_puente", "name": "Fusible puente", "description": "Un fusible con cable envuelto para puentear el panel.", "color": "#e8a33d" }
+  ],
+  "recipes": [
+    { "a": "cable", "b": "fusible", "result": "fusible_puente", "text": "Enrollas el cable al fusible. Debería servir de puente." },
+    { "a": "pagina1", "b": "pagina2", "result": "pagina12", "text": "Las dos páginas encajan por el borde roto." },
+    { "a": "pagina12", "b": "pagina3", "result": "procedimiento", "text": "Con la tercera página el procedimiento queda completo." }
+  ]
+}

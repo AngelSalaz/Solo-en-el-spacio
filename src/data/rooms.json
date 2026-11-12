@@ -1,0 +1,166 @@
+[
+  {
+    "id": "cabina_estacion",
+    "name": "Cabina de vuelo · Estación de misión",
+    "background": "cabina_estacion",
+    "onEnter": [],
+    "hotspots": [
+      {
+        "id": "placa",
+        "label": "Placa de estación",
+        "rect": { "x": 70, "y": 585, "w": 175, "h": 46 },
+        "actions": [
+          { "type": "say", "text": "ESTACIÓN 4. Debajo, un nombre rayado con algo afilado." },
+          { "type": "setFlag", "flag": "dig_estacion" }
+        ]
+      },
+      {
+        "id": "ventanas",
+        "label": "Ventanas",
+        "rect": { "x": 90, "y": 75, "w": 1020, "h": 215 },
+        "actions": [
+          { "type": "say", "text": "Seis ventanas, varias con escarcha. Cuento seis." },
+          { "type": "setFlag", "flag": "dig_ventanas" }
+        ]
+      },
+      {
+        "id": "asiento_sin_luz",
+        "label": "Asiento del comandante",
+        "rect": { "x": 398, "y": 380, "w": 144, "h": 270 },
+        "showIf": ["!item:linterna"],
+        "actions": [{ "type": "say", "text": "No. Ahí no." }]
+      },
+      {
+        "id": "asiento_con_luz",
+        "label": "Asiento del comandante",
+        "rect": { "x": 398, "y": 380, "w": 144, "h": 270 },
+        "showIf": ["item:linterna", "!flag:pagina1_encontrada"],
+        "actions": [
+          { "type": "say", "text": "Con la luz, el asiento está vacío. Hay una página pegada bajo el reposabrazos." },
+          { "type": "give", "item": "pagina1" },
+          { "type": "setFlag", "flag": "pagina1_encontrada" }
+        ]
+      },
+      {
+        "id": "asiento_vacio",
+        "label": "Asiento del comandante",
+        "rect": { "x": 398, "y": 380, "w": 144, "h": 270 },
+        "showIf": ["flag:pagina1_encontrada"],
+        "actions": [{ "type": "say", "text": "Vacío. Como si alguien acabara de levantarse." }]
+      },
+      {
+        "id": "bitacora",
+        "label": "Bitácora",
+        "rect": { "x": 880, "y": 570, "w": 205, "h": 65 },
+        "actions": [
+          { "type": "say", "text": "Las últimas entradas están rayadas. Alguien dejó de escribir a mitad de una línea." }
+        ]
+      },
+      {
+        "id": "paneles",
+        "label": "Paneles",
+        "rect": { "x": 50, "y": 345, "w": 1100, "h": 62 },
+        "actions": [
+          { "type": "say", "text": "Todo apagado. Solo la batería de emergencia mantiene las luces." }
+        ]
+      },
+      {
+        "id": "escalera",
+        "label": "Bajar al entrepuente",
+        "cursor": "go",
+        "rect": { "x": 1085, "y": 440, "w": 95, "h": 190 },
+        "actions": [
+          { "type": "say", "text": "Cinco asientos. ¿Por qué cinco?" },
+          { "type": "goto", "view": "entrepuente_lockers" }
+        ]
+      }
+    ],
+    "shadows": [
+      {
+        "id": "valdes_asiento",
+        "who": "valdes",
+        "x": 470,
+        "y": 520,
+        "scale": 1.15,
+        "scripted": true,
+        "showIf": ["!item:linterna"],
+        "echo": "La silueta alza una mano y señala bajo el reposabrazos."
+      }
+    ]
+  },
+  {
+    "id": "entrepuente_lockers",
+    "name": "Entrepuente · Lockers y literas",
+    "background": "entrepuente_lockers",
+    "hotspots": [
+      {
+        "id": "lockers",
+        "label": "Lockers modulares",
+        "rect": { "x": 440, "y": 110, "w": 420, "h": 314 },
+        "showIf": ["!flag:locker_abierto"],
+        "actions": [{ "type": "say", "text": "Lockers modulares. El 2B tiene una cerradura de tres símbolos." }]
+      },
+      {
+        "id": "lockers_abierto",
+        "label": "Lockers modulares",
+        "rect": { "x": 440, "y": 110, "w": 420, "h": 314 },
+        "showIf": ["flag:locker_abierto"],
+        "actions": [{ "type": "say", "text": "El 2B está abierto y vacío." }]
+      },
+      {
+        "id": "cerradura",
+        "label": "Cerradura del locker 2B",
+        "rect": { "x": 760, "y": 470, "w": 360, "h": 140 },
+        "showIf": ["!flag:locker_abierto"],
+        "actions": [{ "type": "puzzle", "id": "locker2B" }]
+      },
+      {
+        "id": "literas",
+        "label": "Literas",
+        "rect": { "x": 40, "y": 130, "w": 356, "h": 300 },
+        "actions": [
+          { "type": "say", "text": "Cinco sacos de dormir sujetos a la pared. Cinco. Otra vez cinco." },
+          { "type": "setFlag", "flag": "dig_literas" }
+        ]
+      },
+      {
+        "id": "abertura",
+        "label": "Subir a la cabina",
+        "cursor": "go",
+        "rect": { "x": 60, "y": 20, "w": 150, "h": 70 },
+        "actions": [{ "type": "goto", "view": "cabina_estacion" }]
+      },
+      {
+        "id": "panel_piso_sin_llave",
+        "label": "Panel de piso",
+        "rect": { "x": 340, "y": 520, "w": 360, "h": 100 },
+        "showIf": ["!item:llave_hex"],
+        "actions": [{ "type": "say", "text": "Cuatro tornillos hexagonales. Necesito la herramienta adecuada." }]
+      },
+      {
+        "id": "panel_piso_con_llave",
+        "label": "Panel de piso",
+        "rect": { "x": 340, "y": 520, "w": 360, "h": 100 },
+        "showIf": ["item:llave_hex"],
+        "actions": [{ "type": "say", "text": "Los tornillos ceden, pero sin distribución eléctrica no tiene sentido bajar todavía." }]
+      },
+      {
+        "id": "escotilla",
+        "label": "Escotilla lateral",
+        "rect": { "x": 942, "y": 172, "w": 176, "h": 176 },
+        "actions": [{ "type": "say", "text": "Luz roja. Bloqueada. Del otro lado no se oye nada... por ahora." }]
+      }
+    ],
+    "shadows": [
+      {
+        "id": "esquina_ambiente",
+        "who": "ambiente",
+        "x": 1160,
+        "y": 560,
+        "scale": 0.9,
+        "chance": 0.4,
+        "showIf": ["flag:locker_abierto"]
+      }
+    ]
+  }
+]
